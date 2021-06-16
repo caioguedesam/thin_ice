@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6352044166533154307}
   - component: {fileID: 6352044166533154317}
   - component: {fileID: 6352044166533154316}
+  - component: {fileID: 4996583269958395856}
   - component: {fileID: 6352044166533154318}
   m_Layer: 8
   m_Name: Player
@@ -150,6 +151,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &4996583269958395856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6352044166533154306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a80aec1a471d4448caf5907de07699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snowballLayerOnStack: 7
+  _snowballParent: {fileID: 6352044166559174121}
+  _playerMovement: {fileID: 6352044166533154316}
 --- !u!135 &6352044166533154318
 SphereCollider:
   m_ObjectHideFlags: 0

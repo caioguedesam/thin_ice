@@ -345,6 +345,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceTile
       objectReference: {fileID: 0}
+    - target: {fileID: 6024792062463118130, guid: b2d11eb4e5961484aa38b1caa290f008, type: 3}
+      propertyPath: _startsWithSnowball
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6024792062463118131, guid: b2d11eb4e5961484aa38b1caa290f008, type: 3}
       propertyPath: m_RootOrder
       value: 0

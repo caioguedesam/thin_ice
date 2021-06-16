@@ -51,11 +51,11 @@ namespace Biweekly
 
 		private void Start()
 		{
+			TopCheck();
 			if (_startsWithSnowball)
 			{
 				SpawnSnowball();
 			}
-			TopCheck();
 		}
 
 		private void Update()
@@ -76,11 +76,14 @@ namespace Biweekly
 
 		public void RemoveSnowball()
 		{
+			Debug.Log($"Removed snowball from {name}");
 			_hasSnowball = false;
 		}
 
 		private void SpawnSnowball()
 		{
+			if (!_isTop) return;
+			
 			Instantiate(_snowballPrefab, PlayerPositionOnTile, Quaternion.identity, null);
 			_hasSnowball = true;
 		}

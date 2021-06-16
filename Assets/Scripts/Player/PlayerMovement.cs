@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -35,6 +34,7 @@ namespace Biweekly
 		private UnityEvent _onJumpEnd = null;
 		
 		private IceTile _currentTile = null;
+		public IceTile CurrentTile => _currentTile;
 
 		private bool IsFalling => _body.velocity.y < 0f;
 
