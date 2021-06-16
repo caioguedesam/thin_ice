@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Biweekly
 {
@@ -15,17 +18,45 @@ namespace Biweekly
 		[SerializeField]
 		private LayerMask _downCastLayerMask = 0;
 
+		[Header("Jump Controls")]
 		[SerializeField]
+		private float _jumpHeight = 0f;
+		[SerializeField]
+		private float _jumpTime = 0f;
+		[SerializeField]
+		private float _fallTime = 0f;
+		private float _jumpDistance = 0f;
+		private float _gravity = 0f;
+		[SerializeField]
+		private bool _onJump = false;
+
+		[Header("Events")]
+		[SerializeField]
+		private UnityEvent _onJumpStart = null;
+		[SerializeField]
+		private UnityEvent _onJumpEnd = null;
+		
 		private IceTile _currentTile = null;
+
+		private bool IsFalling => _body.velocity.y < 0f;
 
 		private void Awake()
 		{
 			_body = GetComponent<Rigidbody>();
+			_body.useGravity = false;
 		}
 
 		private void Start()
 		{
 			MoveToInitialPosition();
+		}
+
+		private void Update()
+		{
+			if (_onJump)
+				ApplyGravity();
+			// else
+			// 	_body.velocity = Vector3.zero;
 		}
 
 		private void MoveToInitialPosition()
@@ -58,13 +89,76 @@ namespace Biweekly
 
 		private void MoveTo(IceTile tile)
 		{
+			// Don't move when mid jump.
+			if (_onJump) return;
+			
 			if(_currentTile != null)
 				_currentTile.RemovePlayer();
 			_currentTile = tile;
 			_currentTile.AddPlayer();
 			
 			// TODO: Make animated/smooth movement
-			_body.MovePosition(tile.PlayerPositionOnTile);
+			//_body.MovePosition(tile.PlayerPositionOnTile);
+			//JumpTo(tile.PlayerPositionOnTile);
+			StartCoroutine(JumpRoutine(_currentTile.PlayerPositionOnTile));
+		}
+
+		private IEnumerator JumpRoutine(Vector3 finalPos)
+		{
+			_onJump = true;
+			_onJumpStart.Invoke();
+			// Horizontal Movement on Jump
+			Vector3 horizontalStart = new Vector3(transform.position.x, 0f, transform.position.z);
+			Vector3 horizontalEnd = new Vector3(finalPos.x, 0f, finalPos.z);
+			Vector3 horizontalDirection = horizontalEnd - horizontalStart;
+			float horizontalDistance = horizontalDirection.magnitude;
+			horizontalDirection.Normalize();
+			float velX = horizontalDirection.x * (horizontalDistance / (_jumpTime * 2f));
+			float velZ = horizontalDirection.z * (horizontalDistance / (_jumpTime * 2f));
+
+			// Jump Up
+			float heightUp = GetJumpUpHeight(transform.position.y, finalPos.y);
+			float velY = 2f * heightUp / _jumpTime;
+			SetGravity(heightUp, _jumpTime);
+			_body.velocity = new Vector3(velX, velY, velZ);
+			
+			// Wait for Fall
+			yield return new WaitUntil(() => IsFalling);
+			
+			// Fall
+			velX = horizontalDirection.x * (horizontalDistance / (_fallTime * 2f));
+			velZ = horizontalDirection.z * (horizontalDistance / (_fallTime * 2f));
+			_body.velocity = new Vector3(velX, _body.velocity.y, velZ);
+			float heightDown = Mathf.Abs(transform.position.y - finalPos.y);
+			SetGravity(heightDown, _fallTime);
+			yield return new WaitForSeconds(_fallTime);
+
+			_onJump = false;
+			_onJumpEnd.Invoke();
+		}
+
+		private void SetGravity(float dist, float time)
+		{
+			_gravity = (-2f * dist) / Mathf.Pow(time, 2);
+		}
+
+		private void ApplyGravity()
+		{
+			_body.velocity += new Vector3(0f, _gravity * Time.deltaTime, 0f);
+		}
+
+		private float GetJumpUpHeight(float startY, float endY)
+		{
+			if (startY < endY) return _jumpHeight + (endY - startY);
+			return _jumpHeight;
+		}
+
+		public void ToggleConstraints(bool value)
+		{
+			_body.constraints =
+				!value
+					? RigidbodyConstraints.FreezeRotation
+					: RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
 		}
 	}
 }
