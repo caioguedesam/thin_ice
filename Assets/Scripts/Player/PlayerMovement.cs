@@ -25,7 +25,6 @@ namespace Biweekly
 		private float _jumpTime = 0f;
 		[SerializeField]
 		private float _fallTime = 0f;
-		private float _jumpDistance = 0f;
 		private float _gravity = 0f;
 		[SerializeField]
 		private bool _onJump = false;
@@ -55,8 +54,6 @@ namespace Biweekly
 		{
 			if (_onJump)
 				ApplyGravity();
-			// else
-			// 	_body.velocity = Vector3.zero;
 		}
 
 		private void MoveToInitialPosition()
@@ -76,7 +73,7 @@ namespace Biweekly
 				return;
 			}
 			
-			MoveTo(tile);
+			MoveTo(tile, false);
 		}
 
 		public void MoveCheck(GameObject tileObj)
@@ -87,20 +84,21 @@ namespace Biweekly
 			MoveTo(tile);
 		}
 
-		private void MoveTo(IceTile tile)
+		private void MoveTo(IceTile tile, bool breakAfterMove = true)
 		{
 			// Don't move when mid jump.
 			if (_onJump) return;
 			
 			if(_currentTile != null)
 				_currentTile.RemovePlayer();
+			IceTile lastTile = _currentTile;
 			_currentTile = tile;
 			_currentTile.AddPlayer();
 			
-			// TODO: Make animated/smooth movement
-			//_body.MovePosition(tile.PlayerPositionOnTile);
-			//JumpTo(tile.PlayerPositionOnTile);
 			StartCoroutine(JumpRoutine(_currentTile.PlayerPositionOnTile));
+			
+			if(breakAfterMove) 
+				lastTile.Break();
 		}
 
 		private IEnumerator JumpRoutine(Vector3 finalPos)

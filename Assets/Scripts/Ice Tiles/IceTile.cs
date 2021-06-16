@@ -68,13 +68,7 @@ namespace Biweekly
 			_isTop = hitInfo.collider == null;
 		}
 
-		public void BreakCheck(GameObject tileObj)
-		{
-			if (tileObj != gameObject) return;
-			Break();
-		}
-
-		private void Break()
+		public void Break()
 		{
 			_onBreak.Invoke(gameObject);
 		}
