@@ -26,7 +26,6 @@ namespace Biweekly
 		[SerializeField]
 		private float _fallTime = 0f;
 		private float _gravity = 0f;
-		[SerializeField]
 		private bool _onJump = false;
 
 		[Header("Events")]

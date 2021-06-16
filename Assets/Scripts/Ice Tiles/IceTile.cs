@@ -25,6 +25,13 @@ namespace Biweekly
 		private GameObjectUnityEvent _onBreak = null;
 		private bool _isTop = false;
 
+		[Header("Snowball Spawning")]
+		[SerializeField]
+		private bool _startsWithSnowball = false;
+		[SerializeField]
+		private SphereCollider _snowballPrefab = null;
+		private bool _hasSnowball = false;
+
 		public bool IsPlayerStandingOn => _hasPlayer;
 		public bool IsTop => _isTop;
 		public Vector3 PlayerPositionOnTile
@@ -34,12 +41,20 @@ namespace Biweekly
 				Vector3 pos = transform.position;
 				pos.y += _tileCollider.bounds.size.y;
 				pos += _playerPositionOffsetFromTopCenter;
+				if (_hasSnowball)
+				{
+					pos.y += _snowballPrefab.radius * 2f;
+				}
 				return pos;
 			}
 		}
 
 		private void Start()
 		{
+			if (_startsWithSnowball)
+			{
+				SpawnSnowball();
+			}
 			TopCheck();
 		}
 
@@ -59,10 +74,21 @@ namespace Biweekly
 			_hasPlayer = false;
 		}
 
+		public void RemoveSnowball()
+		{
+			_hasSnowball = false;
+		}
+
+		private void SpawnSnowball()
+		{
+			Instantiate(_snowballPrefab, PlayerPositionOnTile, Quaternion.identity, null);
+			_hasSnowball = true;
+		}
+
 		public void TopCheck()
 		{
 			Vector3 castOrigin = transform.position;
-			castOrigin.y += _tileCollider.bounds.size.y;
+			castOrigin.y += _tileCollider.bounds.extents.y;
 
 			Physics.Raycast(castOrigin, Vector3.up, out RaycastHit hitInfo, _topCastDistance, _raycastLayers);
 			_isTop = hitInfo.collider == null;
