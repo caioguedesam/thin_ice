@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using System;
+using Common;
 using UnityEngine;
 
 namespace Biweekly
@@ -28,6 +29,13 @@ namespace Biweekly
 		private void OnMouseEnter()
 		{
 			if (!IsSelectable) return;
+			_onHover = true;
+			_onMouseEnteredTile.Invoke(gameObject);
+		}
+
+		private void OnMouseOver()
+		{
+			if (!IsSelectable || _onHover) return;
 			_onHover = true;
 			_onMouseEnteredTile.Invoke(gameObject);
 		}
