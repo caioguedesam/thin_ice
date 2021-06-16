@@ -106,7 +106,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6024792062022273329}
-  - component: {fileID: 6024792062022273328}
   - component: {fileID: 6024792062022273331}
   m_Layer: 6
   m_Name: Listeners
@@ -129,34 +128,6 @@ Transform:
   m_Father: {fileID: 6024792062463118131}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6024792062022273328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6024792062022273342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b33804c397b44e3290a8211254bdd8f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: 06dd962173179af489096b157518726e, type: 2}
-  _response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6024792062463118130}
-        m_TargetAssemblyTypeName: Biweekly.IceTile, Assembly-CSharp
-        m_MethodName: BreakCheck
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &6024792062022273331
 MonoBehaviour:
   m_ObjectHideFlags: 0

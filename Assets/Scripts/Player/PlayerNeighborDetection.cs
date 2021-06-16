@@ -44,9 +44,13 @@ namespace Biweekly
 		{
 			for (int i = _neighbors.Count - 1; i >= 0; i--)
 			{
-				// TODO: Remove node player is standing on
 				if (_neighbors[i] == null || !_neighbors[i].IsTop) _neighbors.RemoveAt(i);
 			}
+		}
+
+		public bool IsNeighbor(IceTile tile)
+		{
+			return _neighbors.Contains(tile);
 		}
 	}
 }

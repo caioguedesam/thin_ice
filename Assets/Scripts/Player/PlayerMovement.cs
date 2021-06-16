@@ -16,7 +16,7 @@ namespace Biweekly
 		private LayerMask _downCastLayerMask = 0;
 
 		[SerializeField]
-		private IceTile currentTile = null;
+		private IceTile _currentTile = null;
 
 		private void Awake()
 		{
@@ -44,14 +44,23 @@ namespace Biweekly
 				Debug.LogError($"ERROR: No IceTile component on {hitInfo.transform.parent.name}");
 				return;
 			}
-			MoveTo(tile.PlayerPositionOnTile);
-			currentTile = tile;
+			
+			MoveTo(tile);
 		}
 
-		private void MoveTo(Vector3 position)
+		public void MoveCheck(GameObject tileObj)
 		{
+			IceTile tile = tileObj.GetComponent<IceTile>();
+			if (tile == null || tile == _currentTile || !_neighborDetection.IsNeighbor(tile)) return;
+			
+			MoveTo(tile);
+		}
+
+		private void MoveTo(IceTile tile)
+		{
+			_currentTile = tile;
 			// TODO: Make animated/smooth movement
-			_body.MovePosition(position);
+			_body.MovePosition(tile.PlayerPositionOnTile);
 		}
 	}
 }
