@@ -29,7 +29,7 @@ namespace Biweekly
 		private void NeighborCheck(Collider other)
 		{
 			IceTile tile = other.GetComponentInParent<IceTile>();
-			if (tile == null || _neighbors.Contains(tile) || !tile.IsTop) return;
+			if (tile == null || _neighbors.Contains(tile) || !tile.IsTop || tile.IsPlayerStandingOn) return;
 			_neighbors.Add(tile);
 		}
 
@@ -44,7 +44,7 @@ namespace Biweekly
 		{
 			for (int i = _neighbors.Count - 1; i >= 0; i--)
 			{
-				if (_neighbors[i] == null || !_neighbors[i].IsTop) _neighbors.RemoveAt(i);
+				if (_neighbors[i] == null || !_neighbors[i].IsTop || _neighbors[i].IsPlayerStandingOn) _neighbors.RemoveAt(i);
 			}
 		}
 

@@ -17,6 +17,8 @@ namespace Biweekly
 		private GameObjectUnityEvent _onMouseDownOnTile = null;
 		
 		private bool _onHover = false;
+		private bool _onPlayerRange = false;
+		private bool IsSelectable => _onPlayerRange && _iceTile.IsTop && !_iceTile.IsPlayerStandingOn;
 
 		private void Awake()
 		{
@@ -25,7 +27,7 @@ namespace Biweekly
 
 		private void OnMouseEnter()
 		{
-			if (!_iceTile.IsTop) return;
+			if (!IsSelectable) return;
 			_onHover = true;
 			_onMouseEnteredTile.Invoke(gameObject);
 		}
@@ -39,7 +41,22 @@ namespace Biweekly
 
 		private void OnMouseDown()
 		{
+			if (!IsSelectable) return;
 			_onMouseDownOnTile.Invoke(gameObject);
+		}
+
+		private void OnTriggerEnter(Collider other)
+		{
+			if (!other.CompareTag("Player Neighbor Detection")) return;
+
+			_onPlayerRange = true;
+		}
+
+		private void OnTriggerExit(Collider other)
+		{
+			if (!other.CompareTag("Player Neighbor Detection")) return;
+
+			_onPlayerRange = false;
 		}
 	}
 }

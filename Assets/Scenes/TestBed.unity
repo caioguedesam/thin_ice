@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 1134104527}
   m_Layer: 2
   m_Name: Neighbor Detection
-  m_TagString: Untagged
+  m_TagString: Player Neighbor Detection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,6 +12,7 @@ namespace Biweekly
 		[Header("Player Positioning Controls")]
 		[SerializeField]
 		private Vector3 _playerPositionOffsetFromTopCenter = Vector3.zero;
+		private bool _hasPlayer = false;
 		
 		[Header("Top/Bottom Raycast Controls")]
 		[SerializeField]
@@ -24,6 +25,7 @@ namespace Biweekly
 		private GameObjectUnityEvent _onBreak = null;
 		private bool _isTop = false;
 
+		public bool IsPlayerStandingOn => _hasPlayer;
 		public bool IsTop => _isTop;
 		public Vector3 PlayerPositionOnTile
 		{
@@ -45,6 +47,16 @@ namespace Biweekly
 		{
 			// TODO: Remove top check from update and change to whenever player finishes movement.
 			TopCheck();
+		}
+
+		public void AddPlayer()
+		{
+			_hasPlayer = true;
+		}
+
+		public void RemovePlayer()
+		{
+			_hasPlayer = false;
 		}
 
 		public void TopCheck()

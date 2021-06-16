@@ -58,7 +58,11 @@ namespace Biweekly
 
 		private void MoveTo(IceTile tile)
 		{
+			if(_currentTile != null)
+				_currentTile.RemovePlayer();
 			_currentTile = tile;
+			_currentTile.AddPlayer();
+			
 			// TODO: Make animated/smooth movement
 			_body.MovePosition(tile.PlayerPositionOnTile);
 		}

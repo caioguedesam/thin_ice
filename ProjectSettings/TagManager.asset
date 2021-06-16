@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - IceTile
+  - Player Neighbor Detection
   layers:
   - Default
   - TransparentFX
