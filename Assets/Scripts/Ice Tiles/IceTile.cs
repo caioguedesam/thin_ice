@@ -32,6 +32,11 @@ namespace Biweekly
 		private SphereCollider _snowballPrefab = null;
 		private bool _hasSnowball = false;
 
+		[SerializeField]
+		private GameObject _uncrackedTile = null;
+		[SerializeField]
+		private GameObject _crackedTile = null;
+
 		public bool IsPlayerStandingOn => _hasPlayer;
 		public bool IsTop => _isTop;
 		public Vector3 PlayerPositionOnTile
@@ -102,6 +107,16 @@ namespace Biweekly
 
 			Physics.Raycast(castOrigin, Vector3.up, out RaycastHit hitInfo, _topCastDistance, _raycastLayers);
 			_isTop = hitInfo.collider == null;
+		}
+
+		public void CrackCheck()
+		{
+			if (_hasPlayer)
+			{
+				_uncrackedTile.SetActive(false);
+				_crackedTile.SetActive(true);
+				_tileCollider = _crackedTile.GetComponent<Collider>();
+			}
 		}
 
 		public void Break()

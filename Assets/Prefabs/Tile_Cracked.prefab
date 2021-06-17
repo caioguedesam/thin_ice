@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d549d30d2086f34d8fb1627adbf5257, type: 2}
+  - {fileID: 2100000, guid: 7a58f491ca768ff4a804bd23ff7db322, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -176,7 +176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d549d30d2086f34d8fb1627adbf5257, type: 2}
+  - {fileID: 2100000, guid: 7a58f491ca768ff4a804bd23ff7db322, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -290,7 +290,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d549d30d2086f34d8fb1627adbf5257, type: 2}
+  - {fileID: 2100000, guid: 7a58f491ca768ff4a804bd23ff7db322, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -353,7 +353,6 @@ GameObject:
   - component: {fileID: 5749327176546355165}
   - component: {fileID: 4936620530330230116}
   - component: {fileID: 4936620530330230117}
-  - component: {fileID: 4936620530330230138}
   m_Layer: 6
   m_Name: Tile_Cracked
   m_TagString: IceTile
@@ -407,8 +406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _forceOffsetFromCenter: {x: 0, y: 0, z: 0}
-  _horizontalForce: 0.5
+  _horizontalForce: 1
   _verticalForce: 1
+  _fadeTime: 1.5
   _timeToDie: 2
   _onCrack:
     m_PersistentCalls:
@@ -416,34 +416,6 @@ MonoBehaviour:
   _onDeath:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4936620530330230138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4936620530330230119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b33804c397b44e3290a8211254bdd8f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _event: {fileID: 11400000, guid: cfcf2778fba57824ea1f0e699d3e846d, type: 2}
-  _response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4936620530330230117}
-        m_TargetAssemblyTypeName: Biweekly.IceTileCracking, Assembly-CSharp
-        m_MethodName: CrackCheck
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7696085769391277856
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +478,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d549d30d2086f34d8fb1627adbf5257, type: 2}
+  - {fileID: 2100000, guid: 7a58f491ca768ff4a804bd23ff7db322, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -620,7 +592,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d549d30d2086f34d8fb1627adbf5257, type: 2}
+  - {fileID: 2100000, guid: 7a58f491ca768ff4a804bd23ff7db322, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
