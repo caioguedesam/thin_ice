@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -46,17 +47,28 @@ namespace Biweekly
 			_forceCenter = transform.position + _forceOffsetFromCenter;
 		}
 
-		public void Crack()
+		public void CrackCheck(GameObject tileObj)
+		{
+			if (tileObj != transform.parent.gameObject) return;
+			
+			Crack();
+		}
+
+		private void Crack()
 		{
 			_thisCollider.enabled = false;
 			for (int i = _pieceColliders.Count - 1; i >= 0; i--)
 			{
 				Collider coll = _pieceColliders[i];
+				Rigidbody body = _pieceBodies[i];
 				coll.enabled = true;
 
 				Vector3 dir = GetDirectionFromCenter(coll.transform.position);
 				dir = new Vector3(dir.x * _horizontalForce, dir.y * _verticalForce, dir.z * _horizontalForce);
-				_pieceBodies[i].AddForce(dir, ForceMode.Impulse);
+
+				body.isKinematic = false;
+				body.useGravity = true;
+				body.AddForce(dir, ForceMode.Impulse);
 			}
 			
 			_onCrack.Invoke();
@@ -75,6 +87,12 @@ namespace Biweekly
 			
 			yield return new WaitForSeconds(_timeToDie);
 			_onDeath.Invoke();
+		}
+
+		private void OnDrawGizmos()
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawSphere(transform.position + _forceOffsetFromCenter, 0.25f);
 		}
 	}
 }

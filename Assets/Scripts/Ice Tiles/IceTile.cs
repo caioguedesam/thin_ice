@@ -51,6 +51,7 @@ namespace Biweekly
 
 		private void Start()
 		{
+			RandomizeStartRotation();
 			TopCheck();
 			if (_startsWithSnowball)
 			{
@@ -60,8 +61,14 @@ namespace Biweekly
 
 		private void Update()
 		{
-			// TODO: Remove top check from update and change to whenever player finishes movement.
 			TopCheck();
+		}
+
+		private void RandomizeStartRotation()
+		{
+			int rot = Random.Range(0, 6);
+			float startYEuler = 60f * rot;
+			transform.localRotation = Quaternion.Euler(0f, startYEuler, 0f);
 		}
 
 		public void AddPlayer()
