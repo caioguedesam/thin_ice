@@ -682,6 +682,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile_Regular
       objectReference: {fileID: 0}
+    - target: {fileID: 7686425143181464601, guid: 9358e15fa6375dc45a4acddc5b47d0d7, type: 3}
+      propertyPath: endValueColor.b
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686425143181464601, guid: 9358e15fa6375dc45a4acddc5b47d0d7, type: 3}
+      propertyPath: endValueColor.g
+      value: 0.7782817
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686425143181464601, guid: 9358e15fa6375dc45a4acddc5b47d0d7, type: 3}
+      propertyPath: endValueColor.r
+      value: 0.5829477
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190735460651890114, guid: 9358e15fa6375dc45a4acddc5b47d0d7, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190735460651890114, guid: 9358e15fa6375dc45a4acddc5b47d0d7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d549d30d2086f34d8fb1627adbf5257, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9358e15fa6375dc45a4acddc5b47d0d7, type: 3}
 --- !u!1 &2129954684292288884 stripped
