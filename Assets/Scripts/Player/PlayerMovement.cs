@@ -72,7 +72,7 @@ namespace Biweekly
 				return;
 			}
 			
-			MoveTo(tile, false);
+			MoveTo(tile, true);
 		}
 
 		public void MoveCheck(GameObject tileObj)
@@ -83,7 +83,7 @@ namespace Biweekly
 			MoveTo(tile);
 		}
 
-		private void MoveTo(IceTile tile, bool breakAfterMove = true)
+		private void MoveTo(IceTile tile, bool initialMove = false)
 		{
 			// Don't move when mid jump.
 			if (_onJump) return;
@@ -95,9 +95,12 @@ namespace Biweekly
 			_currentTile.AddPlayer();
 			
 			StartCoroutine(JumpRoutine(_currentTile.PlayerPositionOnTile));
-			
-			if(breakAfterMove) 
+
+			if (!initialMove)
+			{
 				lastTile.Break();
+				transform.forward = new Vector3(tile.PlayerPositionOnTile.x - transform.position.x, 0f, tile.PlayerPositionOnTile.z - transform.position.z);
+			}
 		}
 
 		private IEnumerator JumpRoutine(Vector3 finalPos)
