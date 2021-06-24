@@ -451,6 +451,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2440081390044062049}
+        m_TargetAssemblyTypeName: Biweekly.HeightIndicatorText, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _onMouseExitedTile:
     m_PersistentCalls:
       m_Calls:
@@ -469,6 +481,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2129954684292288890}
         m_TargetAssemblyTypeName: DG.Tweening.DOTweenAnimation, Assembly-CSharp-firstpass
         m_MethodName: DORewind
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2440081390044062049}
+        m_TargetAssemblyTypeName: Biweekly.HeightIndicatorText, Assembly-CSharp
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -694,14 +718,6 @@ PrefabInstance:
       propertyPath: endValueColor.r
       value: 0.5829477
       objectReference: {fileID: 0}
-    - target: {fileID: 8190735460651890114, guid: 9358e15fa6375dc45a4acddc5b47d0d7, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8190735460651890114, guid: 9358e15fa6375dc45a4acddc5b47d0d7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3d549d30d2086f34d8fb1627adbf5257, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9358e15fa6375dc45a4acddc5b47d0d7, type: 3}
 --- !u!1 &2129954684292288884 stripped
@@ -728,5 +744,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2440081390044062049 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6266861591325811714, guid: 9358e15fa6375dc45a4acddc5b47d0d7, type: 3}
+  m_PrefabInstance: {fileID: 8585185188762191203}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd004eb1727485e9bf40943814250ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
