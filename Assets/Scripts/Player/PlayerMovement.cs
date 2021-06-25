@@ -132,7 +132,8 @@ namespace Biweekly
 
 			if (!initialMove)
 			{
-				lastTile.Break();
+				if(lastTile != null)
+					lastTile.Break();
 				if(tile != null)
 					transform.forward = new Vector3(tile.PlayerPositionOnTile.x - transform.position.x, 0f, tile.PlayerPositionOnTile.z - transform.position.z);
 			}

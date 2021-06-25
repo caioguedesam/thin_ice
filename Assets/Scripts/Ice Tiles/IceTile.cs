@@ -73,7 +73,6 @@ namespace Biweekly
 		{
 			int rot = Random.Range(0, 6);
 			float startYEuler = 60f * rot;
-			//transform.localRotation = Quaternion.Euler(0f, startYEuler, 0f);
 			_crackedTile.transform.localRotation = Quaternion.Euler(0f, startYEuler, 0f);
 		}
 
