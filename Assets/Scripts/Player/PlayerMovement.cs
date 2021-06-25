@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,11 +28,20 @@ namespace Biweekly
 		private float _gravity = 0f;
 		private bool _onJump = false;
 
+		[Header("Final Movement Controls")]
+		[SerializeField]
+		private string _killTag = "";
+		[SerializeField, Min(0f)]
+		private float _finalPositionYOffset = 0f;
+		private bool _madeFinalJump = false;
+		
 		[Header("Events")]
 		[SerializeField]
 		private UnityEvent _onJumpStart = null;
 		[SerializeField]
 		private UnityEvent _onJumpEnd = null;
+		[SerializeField]
+		private UnityEvent _onDeath = null;
 		
 		private IceTile _currentTile = null;
 		public IceTile CurrentTile => _currentTile;
@@ -51,8 +61,17 @@ namespace Biweekly
 
 		private void Update()
 		{
-			if (_onJump)
+			if (_onJump || _madeFinalJump)
 				ApplyGravity();
+		}
+
+		private void OnTriggerEnter(Collider other)
+		{
+			if (other.CompareTag(_killTag))
+			{
+				_onDeath.Invoke();
+				gameObject.SetActive(false);
+			}
 		}
 
 		private void MoveToInitialPosition()
@@ -83,23 +102,39 @@ namespace Biweekly
 			MoveTo(tile);
 		}
 
-		private void MoveTo(IceTile tile, bool initialMove = false)
+		public void FinalMove()
+		{
+			MoveTo(null, finalMove: true);
+		}
+
+		private void MoveTo(IceTile tile, bool initialMove = false, bool finalMove = false)
 		{
 			// Don't move when mid jump.
 			if (_onJump) return;
 			
 			if(_currentTile != null)
 				_currentTile.RemovePlayer();
-			IceTile lastTile = _currentTile;
-			_currentTile = tile;
-			_currentTile.AddPlayer();
 			
-			StartCoroutine(JumpRoutine(_currentTile.PlayerPositionOnTile));
+			IceTile lastTile = _currentTile;
+			if (finalMove)
+			{
+				_currentTile = null;
+				Vector3 finalPos = transform.position + _finalPositionYOffset * Vector3.down;
+				StartCoroutine(JumpRoutine(finalPos));
+				_madeFinalJump = true;
+			}
+			else
+			{
+				_currentTile = tile;
+				_currentTile.AddPlayer();
+				StartCoroutine(JumpRoutine(_currentTile.PlayerPositionOnTile));
+			}
 
 			if (!initialMove)
 			{
 				lastTile.Break();
-				transform.forward = new Vector3(tile.PlayerPositionOnTile.x - transform.position.x, 0f, tile.PlayerPositionOnTile.z - transform.position.z);
+				if(tile != null)
+					transform.forward = new Vector3(tile.PlayerPositionOnTile.x - transform.position.x, 0f, tile.PlayerPositionOnTile.z - transform.position.z);
 			}
 		}
 

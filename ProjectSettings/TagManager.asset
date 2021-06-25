@@ -7,6 +7,7 @@ TagManager:
   - IceTile
   - Player Neighbor Detection
   - Snowball
+  - Kill Player Volume
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Snowball
   - Player
   - IceTile Ignore
-  - 
+  - Kill Player
   - 
   - 
   - 
