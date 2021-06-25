@@ -29,7 +29,7 @@ namespace Biweekly
 		private static void LoadNextLevel()
 		{
 			int index = SceneManager.GetActiveScene().buildIndex + 1;
-			if (index >= SceneManager.sceneCount)
+			if (index >= SceneManager.sceneCountInBuildSettings)
 			{
 				return;
 			}

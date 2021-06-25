@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 6352044167030666009}
   - component: {fileID: 6352044167030666010}
   - component: {fileID: 1593574628501951028}
+  - component: {fileID: 8462995323400592831}
   m_Layer: 0
   m_Name: Listeners
   m_TagString: Untagged
@@ -360,6 +361,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _event: {fileID: 11400000, guid: db3267f0dda2c6342bf835d4b388454c, type: 2}
   _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8462995323400592831}
+        m_TargetAssemblyTypeName: Common.Behaviors.SimpleDelay, Assembly-CSharp
+        m_MethodName: StartDelay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8462995323400592831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6352044167030666008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2f335022284615a23728fc9a9c600f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delayTime: 0.05
+  _onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  _onEnd:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6352044166533154316}

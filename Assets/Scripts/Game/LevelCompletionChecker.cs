@@ -25,7 +25,7 @@ namespace Biweekly
 
 		private void Start()
 		{
-			_isLastScene = SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCount - 1;
+			_isLastScene = SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1;
 		}
 
 		public void OnBrokeTile()
