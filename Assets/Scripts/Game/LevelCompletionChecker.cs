@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Biweekly
 {
@@ -7,13 +9,23 @@ namespace Biweekly
 	{
 		[SerializeField]
 		private UnityEvent _onLevelComplete = null;
-		
+		[SerializeField]
+		private UnityEvent _onLevelFinished = null;
+		[SerializeField]
+		private UnityEvent _onGameFinished = null;
+
 		private int _levelTiles = 0;
 		private bool _ended = false;
+		private bool _isLastScene = false;
 
 		private void Awake()
 		{
 			_levelTiles = GetComponentsInChildren<IceTile>().Length;
+		}
+
+		private void Start()
+		{
+			_isLastScene = SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCount - 1;
 		}
 
 		public void OnBrokeTile()
@@ -27,6 +39,14 @@ namespace Biweekly
 			
 			_ended = true;
 			_onLevelComplete.Invoke();
+		}
+
+		public void FinishLevel()
+		{
+			if(_isLastScene)
+				_onGameFinished.Invoke();
+			else
+				_onLevelFinished.Invoke();
 		}
 	}
 }

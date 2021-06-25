@@ -156,7 +156,7 @@ MonoBehaviour:
   _onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 2db803dbf44d1ee47b7e0fffa086584e, type: 2}
+      - m_Target: {fileID: 11400000, guid: 2dba74d9cefac994bb41af50e484f373, type: 2}
         m_TargetAssemblyTypeName: Common.GameEvent, Assembly-CSharp
         m_MethodName: Raise
         m_Mode: 1

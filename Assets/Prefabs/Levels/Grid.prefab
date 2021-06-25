@@ -727,6 +727,7 @@ GameObject:
   - component: {fileID: 5389152576158059741}
   - component: {fileID: 6137604957702529207}
   - component: {fileID: 4136403430671636132}
+  - component: {fileID: 5414805438086684973}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -795,6 +796,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onLevelFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 2db803dbf44d1ee47b7e0fffa086584e, type: 2}
+        m_TargetAssemblyTypeName: Common.GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onGameFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: baf8196fe8a98e04c8afc007c4a759f4, type: 2}
+        m_TargetAssemblyTypeName: Common.GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6137604957702529207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,6 +873,34 @@ MonoBehaviour:
       - m_Target: {fileID: 5389152576158059741}
         m_TargetAssemblyTypeName: Biweekly.LevelCompletionChecker, Assembly-CSharp
         m_MethodName: LevelCompletionCheck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5414805438086684973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214806585773539190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41994fa935e547f2a7391727e2effc1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 2dba74d9cefac994bb41af50e484f373, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5389152576158059741}
+        m_TargetAssemblyTypeName: Biweekly.LevelCompletionChecker, Assembly-CSharp
+        m_MethodName: FinishLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
