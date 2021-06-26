@@ -1,5 +1,6 @@
 using Common;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Biweekly
 {
@@ -21,6 +22,8 @@ namespace Biweekly
 		private LayerMask _raycastLayers = 0;
 
 		[Header("Breaking")]
+		[SerializeField]
+		private UnityEvent _onCracked = null;
 		[SerializeField]
 		private GameObjectUnityEvent _onBreak = null;
 		private bool _isTop = false;
@@ -116,6 +119,7 @@ namespace Biweekly
 				_uncrackedTile.SetActive(false);
 				_crackedTile.SetActive(true);
 				_tileCollider = _crackedTile.GetComponent<Collider>();
+				_onCracked.Invoke();
 			}
 		}
 
