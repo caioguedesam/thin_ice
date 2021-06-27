@@ -75,6 +75,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Pp]lugins/Demigiant/*
 /[Aa]ssets/[Pp]lugins/Demigiant.meta
 /[Aa]ssets/Resources/DOTweenSettings.asset*
+/[Aa]ssets/Plugins*
 
 # TMP
 /[Aa]ssets/TextMesh Pro*
@@ -85,7 +86,7 @@ crashlytics-build.properties
 /[Aa]ssets/Fonts*
 /[Aa]ssets/Materials*
 /[Aa]ssets/Models*
-/[Aa]ssets/Palletes*
+/[Aa]ssets/Palettes*
 /[Aa]ssets/Physics*
 /[Aa]ssets/Prefabs*
 /[Aa]ssets/Presets*
