@@ -75,6 +75,20 @@ crashlytics-build.properties
 /[Aa]ssets/[Pp]lugins/Demigiant/*
 /[Aa]ssets/[Pp]lugins/Demigiant.meta
 /[Aa]ssets/Resources/DOTweenSettings.asset*
+/[Aa]ssets/Plugins*
 
 # TMP
 /[Aa]ssets/TextMesh Pro*
+
+# Ignore all unrelated files for project showcase on public repository
+/[Aa]ssets/Art*
+/[Aa]ssets/Audio*
+/[Aa]ssets/Fonts*
+/[Aa]ssets/Materials*
+/[Aa]ssets/Models*
+/[Aa]ssets/Palettes*
+/[Aa]ssets/Physics*
+/[Aa]ssets/Prefabs*
+/[Aa]ssets/Presets*
+/[Aa]ssets/Scenes*
+/[Aa]ssets/Settings*
